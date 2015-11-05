@@ -1,0 +1,16 @@
+'context-menu':
+  'atom-workspace': [{
+    label: 'Minify SVG',
+    command: 'svgo:minify'
+  }]
+
+'menu': [{
+  label: 'Packages'
+  submenu: [
+    label: 'SVGO'
+    submenu: [{
+      label: 'Minify SVG',
+      command: 'svgo:minify'
+    }]
+  ]
+}]

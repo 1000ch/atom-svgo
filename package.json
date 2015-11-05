@@ -1,0 +1,31 @@
+{
+  "name": "svgo",
+  "version": "0.0.0",
+  "description": "Minify SVG with SVGO.",
+  "main": "index.js",
+  "private": true,
+  "activationCommands": {
+    "atom-workspace": [
+      "svgo:minify"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1000ch/atom-svgo.git"
+  },
+  "keywords": [
+    "svg"
+  ],
+  "author": "1000ch",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/1000ch/atom-svgo/issues"
+  },
+  "homepage": "https://github.com/1000ch/atom-svgo#readme",
+  "engines": {
+    "atom": ">=1.0.0"
+  },
+  "dependencies": {
+    "svgo": "^0.5.6"
+  }
+}
