@@ -10,7 +10,7 @@ $ apm install svgo
 
 ## Usage
 
-- Press `ctrl + o` / `ctrl + shift + o`
+- Press <kbd>ctrl</kbd> + <kbd>o</kbd> / <kbd>ctrl</kbd> + </kbd>shift</kbd> + <kbd>o</kbd>
 - `Packages` > `SVGO` > `Minify SVG`
 - Right Click > `Minify SVG`
 
