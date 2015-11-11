@@ -14,7 +14,10 @@
     "url": "git+https://github.com/1000ch/atom-svgo.git"
   },
   "keywords": [
-    "svg"
+    "svg",
+    "svgo",
+    "optimize",
+    "minify"
   ],
   "author": "1000ch",
   "license": "MIT",
@@ -26,6 +29,6 @@
     "atom": ">=1.0.0"
   },
   "dependencies": {
-    "svgo": "^0.5.6"
+    "svgo": "^0.6.0"
   }
 }
