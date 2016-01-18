@@ -1,10 +1,9 @@
 'use babel';
 
-import fs from 'fs';
+import * as fs from 'fs';
 import SVGO from 'svgo';
 
-const minify = () => {
-
+function minify() {
   const editor = atom.workspace.getActiveTextEditor();
 
   if (!editor) {
@@ -21,19 +20,19 @@ const minify = () => {
       if (result.data) {
         let range = editor.getSelectedBufferRange();
         editor.setTextInBufferRange(range, result.data);
+        editor.setCursorBufferPosition(position);
       }
     });
   } else {
     svgo.optimize(text, result => {
       if (result.data) {
         editor.setText(result.data);
+        editor.setCursorBufferPosition(position);
       }
     });
   }
+}
 
-  editor.setCursorBufferPosition(position);
-};
-
-export const activate = (state) => {
+export function activate(state) {
   atom.commands.add('atom-workspace', 'svgo:minify', () => minify());
-};
+}
