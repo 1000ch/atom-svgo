@@ -1,6 +1,6 @@
 {
   "name": "svgo",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Minify SVG with SVGO.",
   "main": "index.js",
   "private": true,
