@@ -1,3 +1,3 @@
 'atom-workspace':
-  'ctrl-o': 'svgo:minify'
-  'ctrl-shift-o': 'svgo:pretty'
+  'ctrl-shift-o': 'svgo:minify'
+  'ctrl-option-o': 'svgo:pretty'
