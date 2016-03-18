@@ -3,8 +3,8 @@
     label: 'Minify SVG',
     command: 'svgo:minify'
   }, {
-    label: 'Pretty SVG',
-    command: 'svgo:pretty'
+    label: 'Prettify SVG',
+    command: 'svgo:prettify'
   }]
 
 'menu': [{
@@ -15,8 +15,8 @@
       label: 'Minify SVG',
       command: 'svgo:minify'
     }, {
-      label: 'Pretty SVG',
-      command: 'svgo:pretty'
+      label: 'Prettify SVG',
+      command: 'svgo:prettify'
     }]
   ]
 }]

@@ -7,7 +7,7 @@
   "activationCommands": {
     "atom-workspace": [
       "svgo:minify",
-      "svgo:pretty"
+      "svgo:prettify"
     ]
   },
   "repository": {
@@ -19,7 +19,7 @@
     "svgo",
     "optimize",
     "minify",
-    "pretty"
+    "prettify"
   ],
   "author": "1000ch",
   "license": "MIT",

@@ -10,11 +10,19 @@ $ apm install svgo
 
 ## Usage
 
-- Press <kbd>ctrl</kbd> + <kbd>o</kbd>
+Selected SVG will be minified or prettified if selection exists.
+
+### Minify SVG
+
+- Press <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>o</kbd>
 - `Packages` > `SVGO` > `Minify SVG`
 - Right Click > `Minify SVG`
 
-Selected SVG will be minified if selection exists.
+### Prettify SVG
+
+- Press <kbd>ctrl</kbd> + <kbd>option</kbd> + <kbd>o</kbd>
+- `Packages` > `SVGO` > `Prettify SVG`
+- Right Click > `Prettify SVG`
 
 ## License
 
