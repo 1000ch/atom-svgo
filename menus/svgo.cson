@@ -2,6 +2,9 @@
   'atom-workspace': [{
     label: 'Minify SVG',
     command: 'svgo:minify'
+  }, {
+    label: 'Pretty SVG',
+    command: 'svgo:pretty'
   }]
 
 'menu': [{
@@ -11,6 +14,9 @@
     submenu: [{
       label: 'Minify SVG',
       command: 'svgo:minify'
+    }, {
+      label: 'Pretty SVG',
+      command: 'svgo:pretty'
     }]
   ]
 }]

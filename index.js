@@ -3,7 +3,7 @@
 import * as fs from 'fs';
 import SVGO from 'svgo';
 
-function minify() {
+function minify(pretty = false) {
   const editor = atom.workspace.getActiveTextEditor();
 
   if (!editor) {
@@ -13,7 +13,7 @@ function minify() {
   let position = editor.getCursorBufferPosition();
   let text = editor.getText();
   let selectedText = editor.getSelectedText();
-  let svgo = new SVGO();
+  let svgo = new SVGO({ js2svg: { pretty } });
 
   if (selectedText.length !== 0) {
     svgo.optimize(selectedText, result => {
@@ -34,5 +34,6 @@ function minify() {
 }
 
 export function activate(state) {
-  atom.commands.add('atom-workspace', 'svgo:minify', () => minify());
+  atom.commands.add('atom-workspace', 'svgo:minify', () => minify(false));
+  atom.commands.add('atom-workspace', 'svgo:pretty', () => minify(true));
 }
