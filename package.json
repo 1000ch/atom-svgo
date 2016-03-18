@@ -6,7 +6,8 @@
   "private": true,
   "activationCommands": {
     "atom-workspace": [
-      "svgo:minify"
+      "svgo:minify",
+      "svgo:pretty"
     ]
   },
   "repository": {
@@ -17,7 +18,8 @@
     "svg",
     "svgo",
     "optimize",
-    "minify"
+    "minify",
+    "pretty"
   ],
   "author": "1000ch",
   "license": "MIT",
