@@ -1,3 +1,8 @@
 'atom-workspace':
   'ctrl-shift-o': 'svgo:minify'
+
+'.platform-darwin atom-workspace':
   'ctrl-option-o': 'svgo:prettify'
+
+'.platform-win32 atom-workspace, .platform-win32 atom-workspace':
+  'ctrl-alt-o': 'svgo:prettify'
