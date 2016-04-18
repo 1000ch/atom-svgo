@@ -1,7 +1,9 @@
 'use babel';
 
-import * as fs from 'fs';
-import SVGO from 'svgo';
+import { normalize, join } from 'path';
+import { spawn } from 'child_process';
+
+const SVGO_PATH = normalize(join(__dirname, 'node_modules', '.bin', 'svgo'));
 
 function minify(pretty = false) {
   const editor = atom.workspace.getActiveTextEditor();
@@ -10,27 +12,26 @@ function minify(pretty = false) {
     return;
   }
 
-  let position = editor.getCursorBufferPosition();
-  let text = editor.getText();
-  let selectedText = editor.getSelectedText();
-  let svgo = new SVGO({ js2svg: { pretty } });
-
-  if (selectedText.length !== 0) {
-    svgo.optimize(selectedText, result => {
-      if (result.data) {
-        let range = editor.getSelectedBufferRange();
-        editor.setTextInBufferRange(range, result.data);
-        editor.setCursorBufferPosition(position);
-      }
-    });
-  } else {
-    svgo.optimize(text, result => {
-      if (result.data) {
-        editor.setText(result.data);
-        editor.setCursorBufferPosition(position);
-      }
-    });
+  let args = ['--input', editor.getPath(), '--output', '-'];
+  if (pretty) {
+    args.push('--pretty');
   }
+
+  let chunks = [];
+  let cp = spawn(SVGO_PATH, args);
+  cp.stdout.on('data', chunk => {
+    chunks.push(chunk);
+  });
+
+  cp.on('error', error => {
+    console.error(error);
+  });
+
+  cp.on('exit', () => {
+    let position = editor.getCursorBufferPosition();
+    editor.setText(Buffer.concat(chunks).toString());
+    editor.setCursorBufferPosition(position);
+  });
 }
 
 export function activate(state) {
