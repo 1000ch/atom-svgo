@@ -10,10 +10,7 @@
       "svgo:prettify"
     ]
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/1000ch/atom-svgo.git"
-  },
+  "repository": "1000ch/atom-svgo",
   "keywords": [
     "svg",
     "svgo",
