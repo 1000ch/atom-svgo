@@ -1,9 +1,12 @@
 'use babel';
 
+import { existsSync } from 'fs';
 import { normalize, join } from 'path';
 import { spawn } from 'child_process';
 
-const SVGO_PATH = normalize(join(__dirname, 'node_modules', '.bin', 'svgo'));
+const unix = normalize(join(__dirname, 'node_modules', '.bin', 'svgo'));
+const win = normalize(join(__dirname, 'node_modules', '.bin', 'svgo.cmd'));
+const SVGO_PATH = existsSync(unix) ? unix : win;
 
 function minify(pretty = false) {
   const editor = atom.workspace.getActiveTextEditor();
