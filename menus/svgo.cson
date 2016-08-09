@@ -1,14 +1,11 @@
 'context-menu':
-  'atom-text-editor:not([mini])[data-grammar$="svg"]': [
-    label: 'SVGO'
-    submenu: [{
+  'atom-text-editor:not([mini])[data-grammar$="svg"]': [{
       label: 'Minify SVG',
       command: 'svgo:minify'
     }, {
       label: 'Prettify SVG',
       command: 'svgo:prettify'
     }]
-]
 'menu': [{
   label: 'Packages'
   submenu: [
