@@ -1,6 +1,8 @@
-# [atom-svgo](https://atom.io/packages/svgo) [![Dependency Status](https://david-dm.org/1000ch/atom-svgo.svg)](https://david-dm.org/1000ch/atom-svgo)
+# [atom-svgo](https://atom.io/packages/svgo)
 
 Minify SVG with [SVGO](http://github.com/svg/svgo).
+
+[![Dependency Status](https://david-dm.org/1000ch/atom-svgo.svg)](https://david-dm.org/1000ch/atom-svgo)
 
 ## Installation
 
