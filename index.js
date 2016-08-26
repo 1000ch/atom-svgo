@@ -1,6 +1,12 @@
 'use babel';
 
-import svgo from 'svgo';
+import { type } from 'os';
+import { normalize, join } from 'path';
+import { spawn } from 'child_process';
+
+const unix = normalize(join(__dirname, 'node_modules', '.bin', 'svgo'));
+const win = normalize(join(__dirname, 'node_modules', '.bin', 'svgo.cmd'));
+const SVGO_PATH = type() === 'Windows_NT' ? win : unix;
 
 function minify(pretty = false) {
   const editor = atom.workspace.getActiveTextEditor();
@@ -9,17 +15,24 @@ function minify(pretty = false) {
     return;
   }
 
-  let options = {};
+  let args = ['--input', editor.getPath(), '--output', '-'];
   if (pretty) {
-    options.js2svg = {
-      pretty: pretty
-    };
+    args.push('--pretty');
   }
 
-  let text = editor.getText();
-  new svgo(options).optimize(text, result => {
+  let chunks = [];
+  let cp = spawn(SVGO_PATH, args);
+  cp.stdout.on('data', chunk => {
+    chunks.push(chunk);
+  });
+
+  cp.on('error', error => {
+    console.error(error);
+  });
+
+  cp.on('exit', () => {
     let position = editor.getCursorBufferPosition();
-    editor.setText(result.data);
+    editor.setText(Buffer.concat(chunks).toString());
     editor.setCursorBufferPosition(position);
   });
 }
