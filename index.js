@@ -37,7 +37,7 @@ function minify(pretty = false) {
   });
 }
 
-export function activate(state) {
+export function activate() {
   atom.commands.add('atom-workspace', 'svgo:minify', () => minify(false));
   atom.commands.add('atom-workspace', 'svgo:prettify', () => minify(true));
 }

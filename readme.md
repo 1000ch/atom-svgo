@@ -14,15 +14,13 @@ $ apm install svgo
 
 ### Minify SVG
 
-- Press <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>o</kbd>
 - `Packages` > `SVGO` > `Minify SVG`
-- Right Click > `Minify SVG`
+- Context Menu > `Minify SVG`
 
 ### Prettify SVG
 
-- Press <kbd>ctrl</kbd> + <kbd>option</kbd> + <kbd>o</kbd>
 - `Packages` > `SVGO` > `Prettify SVG`
-- Right Click > `Prettify SVG`
+- Context Menu > `Prettify SVG`
 
 ## License
 
