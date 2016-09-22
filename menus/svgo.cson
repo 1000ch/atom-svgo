@@ -1,5 +1,5 @@
 'context-menu':
-  'atom-text-editor:not([mini])[data-grammar$="svg"]': [{
+  'atom-text-editor': [{
       label: 'Minify SVG',
       command: 'svgo:minify'
     }, {
