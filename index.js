@@ -21,19 +21,29 @@ function minify(pretty = false) {
   }
 
   let chunks = [];
+  let errors = [];
+
   let cp = spawn(SVGO_PATH, args);
   cp.stdout.on('data', chunk => {
     chunks.push(chunk);
   });
 
-  cp.on('error', error => {
-    console.error(error);
+  cp.stderr.on('data', error => {
+    errors.push(error);
   });
 
-  cp.on('exit', () => {
-    let position = editor.getCursorBufferPosition();
-    editor.setText(Buffer.concat(chunks).toString());
-    editor.setCursorBufferPosition(position);
+  cp.on('error', error => {
+    atom.notifications.addError(error, {});
+  });
+
+  cp.on('exit', code => {
+    if (code === 2) {
+      atom.notifications.addError(Buffer.concat(errors).toString(), {});
+    } else {
+      let position = editor.getCursorBufferPosition();
+      editor.setText(Buffer.concat(chunks).toString());
+      editor.setCursorBufferPosition(position);
+    }
   });
 }
 
