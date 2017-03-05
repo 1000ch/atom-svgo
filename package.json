@@ -10,6 +10,14 @@
       "svgo:prettify"
     ]
   },
+  "configSchema": {
+    "indent": {
+      "title": "Indent",
+      "description": "Indent size applied on prettify",
+      "type": "number",
+      "default": 2
+    }
+  },
   "repository": "1000ch/atom-svgo",
   "keywords": [
     "svg",

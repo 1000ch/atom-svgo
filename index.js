@@ -1,5 +1,6 @@
 'use babel';
 
+import { CompositeDisposable } from 'atom';
 import { type } from 'os';
 import { normalize, join } from 'path';
 import execa from 'execa';
@@ -8,6 +9,23 @@ const unix = normalize(join(__dirname, 'node_modules', '.bin', 'svgo'));
 const win = normalize(join(__dirname, 'node_modules', '.bin', 'svgo.cmd'));
 const svgo = type() === 'Windows_NT' ? win : unix;
 
+let subscriptions;
+let indent;
+
+export function activate() {
+  subscriptions = new CompositeDisposable();
+  subscriptions.add(atom.config.observe('svgo.indent', value => {
+    indent = value;
+  }));
+
+  atom.commands.add('atom-workspace', 'svgo:minify', () => minify(false));
+  atom.commands.add('atom-workspace', 'svgo:prettify', () => minify(true));
+}
+
+export function deactivate() {
+  subscriptions.dispose();
+}
+
 function minify(pretty = false) {
   const editor = atom.workspace.getActiveTextEditor();
 
@@ -15,7 +33,12 @@ function minify(pretty = false) {
     return;
   }
 
-  const args = ['--string', editor.getText(), '--output', '-'];
+  const args = [
+    '--string', editor.getText(),
+    '--indent', indent,
+    '--output', '-'
+  ];
+
   if (pretty) {
     args.push('--pretty');
   }
@@ -29,9 +52,4 @@ function minify(pretty = false) {
   }).catch(error => {
     atom.notifications.addError(errors, {});
   });
-}
-
-export function activate() {
-  atom.commands.add('atom-workspace', 'svgo:minify', () => minify(false));
-  atom.commands.add('atom-workspace', 'svgo:prettify', () => minify(true));
 }
