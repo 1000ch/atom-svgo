@@ -4,9 +4,9 @@ Minify SVG with [SVGO](http://github.com/svg/svgo).
 
 [![Dependency Status](https://david-dm.org/1000ch/atom-svgo.svg)](https://david-dm.org/1000ch/atom-svgo)
 
-## Installation
+## Install
 
-```sh
+```bash
 $ apm install svgo
 ```
 
@@ -24,4 +24,4 @@ $ apm install svgo
 
 ## License
 
-MIT: http://1000ch.mit-license.org
+[MIT](https://1000ch.mit-license.org) © [Shogo Sensui](https://github.com/1000ch)

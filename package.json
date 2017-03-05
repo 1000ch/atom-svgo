@@ -18,7 +18,11 @@
     "minify",
     "prettify"
   ],
-  "author": "1000ch",
+  "author": {
+    "name": "1000ch",
+    "email": "shogo.sensui@gmail.com",
+    "url": "https://github.com/1000ch"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/1000ch/atom-svgo/issues"
