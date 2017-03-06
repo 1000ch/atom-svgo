@@ -13,9 +13,15 @@
   "configSchema": {
     "indent": {
       "title": "Indent",
-      "description": "Indent size applied on prettify",
+      "description": "Indent size to apply on prettify",
       "type": "number",
       "default": 2
+    },
+    "disable": {
+      "title": "Disable",
+      "description": "Plugin names (separated with space delimiter) to disable",
+      "type": "string",
+      "default": ""
     }
   },
   "repository": "1000ch/atom-svgo",

@@ -22,6 +22,16 @@ $ apm install svgo
 - `Packages` > `SVGO` > `Prettify SVG`
 - Context Menu > `Prettify SVG`
 
+## Config
+
+### Indent
+
+Indent size to apply on prettify.
+
+### Disable
+
+[Plugin names](https://github.com/svg/svgo#what-it-can-do) (separated with space delimiter) to disable.
+
 ## License
 
 [MIT](https://1000ch.mit-license.org) © [Shogo Sensui](https://github.com/1000ch)

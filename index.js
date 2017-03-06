@@ -11,11 +11,15 @@ const svgo = type() === 'Windows_NT' ? win : unix;
 
 let subscriptions;
 let indent;
+let disable;
 
 export function activate() {
   subscriptions = new CompositeDisposable();
   subscriptions.add(atom.config.observe('svgo.indent', value => {
     indent = value;
+  }));
+  subscriptions.add(atom.config.observe('svgo.disable', value => {
+    disable = value;
   }));
 
   atom.commands.add('atom-workspace', 'svgo:minify', () => minify(false));
@@ -36,6 +40,7 @@ function minify(pretty = false) {
   const args = [
     '--string', editor.getText(),
     '--indent', indent,
+    ...disable.trim().split(' ').map(name => `--disable=${name}`),
     '--output', '-'
   ];
 
@@ -50,6 +55,6 @@ function minify(pretty = false) {
     editor.setText(stdout.toString());
     editor.setCursorBufferPosition(position);
   }).catch(error => {
-    atom.notifications.addError(errors, {});
+    atom.notifications.addError(error.toString(), {});
   });
 }
