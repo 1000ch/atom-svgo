@@ -19,7 +19,7 @@ export function activate() {
     indent = value;
   }));
   subscriptions.add(atom.config.observe('svgo.disable', value => {
-    disable = value;
+    disable = String(value).trim();
   }));
 
   atom.commands.add('atom-workspace', 'svgo:minify', () => minify(false));
@@ -37,10 +37,12 @@ function minify(pretty = false) {
     return;
   }
 
+  const disables = disable.length === 0 ? [] : disable.split(' ');
+
   const args = [
     '--string', editor.getText(),
     '--indent', indent,
-    ...disable.trim().split(' ').map(name => `--disable=${name}`),
+    ...disables.map(name => `--disable=${name}`),
     '--output', '-'
   ];
 
