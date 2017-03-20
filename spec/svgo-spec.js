@@ -24,22 +24,26 @@ describe('SVGO plugin for Atom', () => {
 
   describe('process fixture.svg and', () => {
     it('minify', () => {
-      waitsForPromise(() =>
-        atom.workspace.open(fixture).then(editor => minify(editor)).then((editor) => {
-          expect(editor.getText()).toEqual('<svg width="10" height="20">test</svg>');
-        })
-      );
+      waitsForPromise(() => {
+        return atom.workspace.open(fixture)
+          .then(editor => minify(editor))
+          .then(editor => {
+            expect(editor.getText()).toEqual('<svg width="10" height="20">test</svg>');
+          });
+      });
     });
 
     it('prettify', () => {
-      waitsForPromise(() =>
-        atom.workspace.open(fixture).then(editor => prettify(editor)).then((editor) => {
-          expect(editor.getText()).toEqual(`<svg width="10" height="20">
+      waitsForPromise(() => {
+        return atom.workspace.open(fixture)
+          .then(editor => prettify(editor))
+          .then((editor) => {
+            expect(editor.getText()).toEqual(`<svg width="10" height="20">
   test
 </svg>
 `);
-        })
-      );
+        });
+      });
     });
   });
 });

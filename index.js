@@ -68,10 +68,8 @@ function process(args) {
 }
 
 function setText(editor, text) {
-  return new Promise(resolve => {
-    const position = editor.getCursorBufferPosition();
-    editor.setText(text);
-    editor.setCursorBufferPosition(position);
-    resolve(editor);
-  });
+  const position = editor.getCursorBufferPosition();
+  editor.setText(text);
+  editor.setCursorBufferPosition(position);
+  return Promise.resolve(editor);
 }
