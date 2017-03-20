@@ -4,7 +4,8 @@
   "private": true,
   "description": "Minify SVG with SVGO.",
   "scripts": {
-    "test": "eslint ."
+    "test": "apm test",
+    "pretest": "eslint ."
   },
   "activationCommands": {
     "atom-workspace": [

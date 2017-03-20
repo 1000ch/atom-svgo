@@ -1,42 +1,30 @@
 'use babel';
 
-import { CompositeDisposable } from 'atom';
-import { type } from 'os';
-import { normalize, join } from 'path';
+import os from 'os';
+import path from 'path';
 import execa from 'execa';
 
-const unix = normalize(join(__dirname, 'node_modules', '.bin', 'svgo'));
-const win = normalize(join(__dirname, 'node_modules', '.bin', 'svgo.cmd'));
-const svgo = type() === 'Windows_NT' ? win : unix;
-
-let subscriptions;
-let indent;
-let disable;
+const unix = path.normalize(path.join(__dirname, 'node_modules', '.bin', 'svgo'));
+const win = path.normalize(path.join(__dirname, 'node_modules', '.bin', 'svgo.cmd'));
+const svgo = os.type() === 'Windows_NT' ? win : unix;
 
 export function activate() {
-  subscriptions = new CompositeDisposable();
-  subscriptions.add(atom.config.observe('svgo.indent', value => {
-    indent = value;
-  }));
-  subscriptions.add(atom.config.observe('svgo.disable', value => {
-    disable = String(value).trim();
-  }));
+  atom.commands.add('atom-workspace', 'svgo:minify', () => {
+    minify(atom.workspace.getActiveTextEditor());
+  });
 
-  atom.commands.add('atom-workspace', 'svgo:minify', () => minify(false));
-  atom.commands.add('atom-workspace', 'svgo:prettify', () => minify(true));
+  atom.commands.add('atom-workspace', 'svgo:prettify', () => {
+    prettify(atom.workspace.getActiveTextEditor());
+  });
 }
 
-export function deactivate() {
-  subscriptions.dispose();
-}
-
-function minify(pretty = false) {
-  const editor = atom.workspace.getActiveTextEditor();
-
+export function minify(editor) {
   if (!editor) {
-    return;
+    return Promise.reject(new Error('editor is invalid'));
   }
 
+  const indent = atom.config.get('svgo.indent');
+  const disable = atom.config.get('svgo.disable');
   const disables = disable.length === 0 ? [] : disable.split(' ');
 
   const args = [
@@ -46,17 +34,44 @@ function minify(pretty = false) {
     '--output', '-'
   ];
 
-  if (pretty) {
-    args.push('--pretty');
+  return process(args)
+    .then(stdout => setText(editor, stdout.toString()))
+    .catch(error => atom.notifications.addError(error.toString(), {}));
+}
+
+export function prettify(editor) {
+  if (!editor) {
+    return Promise.reject(new Error('editor is invalid'));
   }
 
-  execa.stdout(svgo, args, {
+  const indent = atom.config.get('svgo.indent');
+  const disable = atom.config.get('svgo.disable');
+  const disables = disable.length === 0 ? [] : disable.split(' ');
+
+  const args = [
+    '--string', editor.getText(),
+    '--indent', indent,
+    '--pretty',
+    ...disables.map(name => `--disable=${name}`),
+    '--output', '-'
+  ];
+
+  return process(args)
+    .then(stdout => setText(editor, stdout.toString()))
+    .catch(error => atom.notifications.addError(error.toString(), {}));
+}
+
+function process(args) {
+  return execa.stdout(svgo, args, {
     encoding: null
-  }).then(stdout => {
+  });
+}
+
+function setText(editor, text) {
+  return new Promise(resolve => {
     const position = editor.getCursorBufferPosition();
-    editor.setText(stdout.toString());
+    editor.setText(text);
     editor.setCursorBufferPosition(position);
-  }).catch(error => {
-    atom.notifications.addError(error.toString(), {});
+    resolve(editor);
   });
 }

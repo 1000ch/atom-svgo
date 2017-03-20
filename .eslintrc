@@ -5,7 +5,10 @@
   },
   "env": {
     "browser": true,
-    "node": true
+    "es6": true,
+    "node": true,
+    "atomtest": true,
+    "jasmine": true
   },
   "globals": {
     "atom": true
