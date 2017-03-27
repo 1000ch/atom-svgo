@@ -8,6 +8,8 @@ Minify SVG with [SVGO](http://github.com/svg/svgo).
 [![Dependency Status](https://david-dm.org/1000ch/atom-svgo.svg)](https://david-dm.org/1000ch/atom-svgo)
 [![devDependency Status](https://david-dm.org/1000ch/atom-svgo/dev-status.svg)](https://david-dm.org/1000ch/atom-svgo?type=dev)
 
+![demo](demo.gif)
+
 ## Install
 
 ```bash
