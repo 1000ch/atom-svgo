@@ -1,9 +1,9 @@
 'use babel';
 
-import path from 'path';
+import { join } from 'path';
+import { minify, prettify } from '..';
 
-const fixture = path.join(__dirname, 'fixture.svg');
-const { minify, prettify } = require('..');
+const fixture = join(__dirname, 'fixture.svg');
 
 describe('SVGO plugin for Atom', () => {
   beforeEach(() => {
@@ -37,7 +37,7 @@ describe('SVGO plugin for Atom', () => {
       waitsForPromise(() => {
         return atom.workspace.open(fixture)
           .then(editor => prettify(editor))
-          .then((editor) => {
+          .then(editor => {
             expect(editor.getText()).toEqual(`<svg width="10" height="20">
   test
 </svg>

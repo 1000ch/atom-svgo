@@ -18,15 +18,9 @@ $ apm install svgo
 
 ## Usage
 
-### Minify SVG
-
-- `Packages` > `SVGO` > `Minify SVG`
-- Context Menu > `Minify SVG`
-
-### Prettify SVG
-
-- `Packages` > `SVGO` > `Prettify SVG`
-- Context Menu > `Prettify SVG`
+- Packages > SVGO > **Minify SVG** or **Prettify SVG**
+- Context Menu > **Minify SVG** or **Prettify SVG**
+- Command Palette (<kbd>⌘</kbd> + <kbd>shift</kbd> + <kbd>P</kbd>) > **Minify SVG** or **Prettify SVG**
 
 ## Config
 

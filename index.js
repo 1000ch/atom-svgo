@@ -71,5 +71,5 @@ function setText(editor, text) {
   const position = editor.getCursorBufferPosition();
   editor.setText(text);
   editor.setCursorBufferPosition(position);
-  return Promise.resolve(editor);
+  return editor;
 }
