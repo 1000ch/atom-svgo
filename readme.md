@@ -8,7 +8,7 @@ Minify SVG with [SVGO](http://github.com/svg/svgo).
 [![Dependency Status](https://david-dm.org/1000ch/atom-svgo.svg)](https://david-dm.org/1000ch/atom-svgo)
 [![devDependency Status](https://david-dm.org/1000ch/atom-svgo/dev-status.svg)](https://david-dm.org/1000ch/atom-svgo?type=dev)
 
-![demo](demo.gif)
+![demo](https://cloud.githubusercontent.com/assets/1800018/24584828/d347d8ce-17b5-11e7-9e40-51056e324673.gif)
 
 ## Install
 
