@@ -10,12 +10,6 @@ describe('SVGO plugin for Atom', () => {
     atom.workspace.destroyActivePaneItem();
     atom.config.set('svgo.indent', 2);
     atom.config.set('svgo.disable', '');
-
-    waitsForPromise(() =>
-      Promise.all([
-        atom.packages.activatePackage('language-svg')
-      ])
-    );
   });
 
   describe('define functions', () => {
