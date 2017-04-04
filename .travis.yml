@@ -11,6 +11,10 @@ matrix:
     - os: osx
       env: ATOM_CHANNEL=stable
 
+env:
+  global:
+    - APM_TEST_PACKAGES="language-svg"
+
 script:
   - curl -s -O https://raw.githubusercontent.com/atom/ci/master/build-package.sh
   - chmod u+x build-package.sh

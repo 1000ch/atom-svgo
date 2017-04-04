@@ -1,4 +1,6 @@
 environment:
+  APM_TEST_PACKAGES: language-svg
+
   matrix:
   - ATOM_CHANNEL: stable
   - ATOM_CHANNEL: beta

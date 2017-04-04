@@ -7,3 +7,7 @@ test:
 dependencies:
   override:
     - echo "Managed in the script"
+
+machine:
+  environment:
+    APM_TEST_PACKAGES: "language-svg"
