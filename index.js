@@ -9,11 +9,11 @@ const win = path.normalize(path.join(__dirname, 'node_modules', '.bin', 'svgo.cm
 const svgo = os.type() === 'Windows_NT' ? win : unix;
 
 export function activate() {
-  atom.commands.add('atom-workspace', 'svgo:minify', () => {
+  atom.commands.add('atom-text-editor:not([mini])', 'svgo:minify', () => {
     minify(atom.workspace.getActiveTextEditor());
   });
 
-  atom.commands.add('atom-workspace', 'svgo:prettify', () => {
+  atom.commands.add('atom-text-editor:not([mini])', 'svgo:prettify', () => {
     prettify(atom.workspace.getActiveTextEditor());
   });
 }
