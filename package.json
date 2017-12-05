@@ -49,10 +49,10 @@
     "atom": ">=1.0.0"
   },
   "dependencies": {
-    "execa": "^0.7.0",
-    "svgo": "^0.7.0"
+    "execa": "^0.8.0",
+    "svgo": "^1.0.3"
   },
   "devDependencies": {
-    "eslint": "^4.3.0"
+    "eslint": "^4.12.1"
   }
 }
