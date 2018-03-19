@@ -52,8 +52,8 @@
     "atom": ">=1.0.0"
   },
   "dependencies": {
-    "execa": "^0.8.0",
-    "svgo": "^1.0.3"
+    "execa": "^0.10.0",
+    "svgo": "^1.0.5"
   },
   "devDependencies": {
     "eslint": "^4.12.1"
