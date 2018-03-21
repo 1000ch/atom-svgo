@@ -1,9 +1,9 @@
-test:
+dependencies:
   override:
     - curl -s -O https://raw.githubusercontent.com/atom/ci/master/build-package.sh
     - chmod u+x build-package.sh
 
-dependencies:
+test:
   override:
     - ./build-package.sh
 
