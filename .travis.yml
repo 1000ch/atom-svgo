@@ -1,5 +1,7 @@
-language: generic
-os: linux
+language: node_js
+os:
+  - linux
+  - windows
 
 env:
   global:
