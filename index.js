@@ -57,13 +57,17 @@ export function prettify(editor) {
   ];
 
   return process(args)
-    .then(result => setText(editor, result.stdout.toString()))
+    .then(text => setText(editor, text))
     .catch(error => atom.notifications.addError(error.toString(), {}));
 }
 
 function process(args) {
   return execa(svgo, args, {
     encoding: null
+  }).then(result => {
+    const { stdout } = result;
+
+    return Buffer.isBuffer(stdout) ? stdout.toString() : stdout;
   });
 }
 
