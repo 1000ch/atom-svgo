@@ -3,7 +3,6 @@
 Minify SVG with [SVGO](http://github.com/svg/svgo).
 
 [![Build Status](https://travis-ci.org/1000ch/atom-svgo.svg?branch=master)](https://travis-ci.org/1000ch/atom-svgo)
-[![Build status](https://ci.appveyor.com/api/projects/status/5nwje50xtlplpbxd?svg=true)](https://ci.appveyor.com/project/1000ch/atom-svgo)
 [![Dependency Status](https://david-dm.org/1000ch/atom-svgo.svg)](https://david-dm.org/1000ch/atom-svgo)
 [![devDependency Status](https://david-dm.org/1000ch/atom-svgo/dev-status.svg)](https://david-dm.org/1000ch/atom-svgo?type=dev)
 
