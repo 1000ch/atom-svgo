@@ -1,5 +1,7 @@
 language: generic
-os: linux
+os:
+  - linux
+  - osx
 
 env:
   global:
