@@ -1,4 +1,4 @@
-# [atom-svgo](https://atom.io/packages/svgo)
+# atom-[svgo](https://atom.io/packages/svgo)
 
 Minify SVG with [SVGO](http://github.com/svg/svgo).
 
