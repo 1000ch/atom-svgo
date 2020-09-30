@@ -9,7 +9,6 @@ env:
 
   matrix:
     - ATOM_CHANNEL=stable
-    - ATOM_CHANNEL=beta
 
 script:
   - curl -s -O https://raw.githubusercontent.com/atom/ci/master/build-package.sh
