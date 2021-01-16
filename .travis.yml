@@ -1,6 +1,5 @@
 language: generic
 os:
-  - linux
   - osx
 
 env:
