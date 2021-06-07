@@ -52,7 +52,7 @@
     "atom": ">=1.0.0"
   },
   "dependencies": {
-    "execa": "^5.0.0",
+    "execa": "^5.1.1",
     "svgo": "^2.3.0"
   },
   "devDependencies": {
